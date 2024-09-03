@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MHD_VOICE_CALCULATOR</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(270deg, #ff3e3e, #3e92ff, #ff9e3e, #00BCD4);
+            background-size: 800% 800%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+
+        .zoom-text {
+            font-size: 2em; 
+            font-weight: bold; 
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: zoomIn 2s ease-out forwards, fadeOut 1s ease 2s forwards;
+        }
+        @keyframes zoomIn {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(3); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity:  0; }
+        }
+
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            text-align: center;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-out forwards, moveUpDown 3s ease-in-out infinite; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* حركة لأعلى ولأسفل */
+        @keyframes moveUpDown {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, calc(-50% - 20px)); }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: textColorChange 5s linear infinite;
+        }
+        @keyframes textColorChange {
+            0% { color: #ff006e; }
+            25% { color: #3e92ff; }
+            50% { color: #ff9e3e; }
+            75% { color: #00BCD4; }
+            100% { color: #ff006e; }
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #3e92ff;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #FF6F61;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .button:hover {
+            box-shadow: 0 0 20px #FF6F61;
+            transform: scale(1.05);
+            background-color: #00BCD4;
+        }
+    </style>
+</head>
+<body>
+    <div class="zoom-text">Hello!</div>
+    <div class="content">
+        <h1>MHD_VOICE_CALCULATOR</h1>
+        <h3>اختر اللغة / Choose Language</h3>
+        <button class="button" onclick="window.location.href='mhd_voice_calculator.html?lang=ar-EG'">العربية</button>
+        <button class="button" onclick="window.location.href='mhd_voice_calculator.html?lang=en-US'">English</button>
+        <h4>THIS PROJECT BY "MOSTAFA HAZEM"</h4>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const zoomText = document.querySelector('.zoom-text');
+            const content = document.querySelector('.content');
+
+            
+            setTimeout(() => {
+                zoomText.style.display = 'none'; 
+                content.style.display = 'block'; 
+                content.style.opacity = 1; 
+            }, 2500); 
+        });
+    </script>
+</body>
+</html>
